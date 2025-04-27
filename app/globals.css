@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
+
+    /* Card colors */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    /* Popover colors */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Primary colors - calm blue */
+    --primary: 217 91% 53%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary colors - gold accent */
+    --secondary: 47 95% 53%;
+    --secondary-foreground: 222 47% 11%;
+
+    /* Muted colors */
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    /* Accent colors */
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    /* Destructive colors */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Border colors */
+    --border: 214.3 31.8% 91.4%;
+
+    /* Input colors */
+    --input: 214.3 31.8% 91.4%;
+
+    /* Ring colors */
+    --ring: 217 91% 53%;
+
+    /* Radius */
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 53%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 47 95% 53%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Typography scale */
+  h1 {
+    @apply text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold tracking-tight md:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl font-semibold tracking-tight md:text-2xl;
+  }
+
+  h4 {
+    @apply text-lg font-semibold tracking-tight;
+  }
+
+  p {
+    @apply leading-7;
+  }
+
+  /* Microinteractions */
+  .hover-lift {
+    @apply transition-all duration-200;
+  }
+
+  .hover-lift:hover {
+    @apply translate-y-[-2px];
+    @apply shadow-md;
+  }
+
+  .result-bounce {
+    animation: bounce 0.5s;
+  }
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Soft validation styles */
+  .input-validation {
+    @apply border-2 transition-colors duration-200;
+  }
+
+  .input-validation.valid {
+    @apply border-green-500/20 bg-green-50 dark:bg-green-950/20;
+  }
+
+  .input-validation.invalid {
+    @apply border-amber-500/20 bg-amber-50 dark:bg-amber-950/20;
+  }
+
+  /* Ensure focus states are visible */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2;
+  }
+
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    .hover-lift:hover {
+      @apply translate-y-0 shadow-none;
+    }
+  }
+}
+
+/* Calculator-specific styles */
+.calculator-result {
+  @apply rounded-lg bg-primary/5 p-4 transition-all duration-300;
+}
+
+.calculator-result.updated {
+  @apply bg-primary/10;
+}
+
+/* Tip percentage buttons */
+.tip-btn {
+  @apply rounded-md border border-input bg-background px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+}
+
+.tip-btn.active {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90;
+}
+
+/* Scroll hints for mobile */
+.scroll-hint {
+  @apply absolute bottom-4 left-1/2 -translate-x-1/2 animate-bounce text-muted-foreground;
+}
+
+@media (min-width: 768px) {
+  .scroll-hint {
+    @apply hidden;
+  }
+}
+
+/* Location badge styles */
+.location-badge {
+  @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+}
+
+/* Currency input styles */
+.currency-input {
+  @apply pl-8;
+}
+
+.currency-symbol {
+  @apply absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground;
+}
