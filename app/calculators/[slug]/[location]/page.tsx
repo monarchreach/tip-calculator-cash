@@ -13,6 +13,29 @@ interface LocationCalculatorPageProps {
   }
 }
 
+// Define which calculators should have location-specific variants
+const localizableCalculators = {
+  "restaurant-tip-calculator": ["new-york", "london", "dubai", "barcelona", "las-vegas", "bali"],
+  "taxi-tip-calculator": ["new-york", "paris", "berlin"],
+  "hotel-staff-tip-calculator": ["tokyo", "sydney"],
+  "group-dining-tip-calculator": ["new-york", "london"],
+  "event-planner-tip-calculator": ["dubai", "las-vegas"],
+  "cafe-tip-calculator": ["paris", "rome", "vienna"],
+  "spa-service-tip-calculator": ["bali", "bangkok", "dubai"],
+  "hair-salon-tip-calculator": ["new-york", "london", "tokyo"],
+  "bar-bartender-tip-calculator": ["las-vegas", "miami", "ibiza"],
+  "food-delivery-tip-calculator": ["new-york", "london", "sydney"],
+  "bellhop-tip-calculator": ["dubai", "las-vegas", "singapore"],
+  "concierge-service-tip-calculator": ["new-york", "london", "tokyo"],
+  "housekeeping-tip-calculator": ["bali", "maldives", "phuket"]
+}
+
+export async function generateStaticParams() {
+  return Object.entries(localizableCalculators).flatMap(([slug, locations]) =>
+    locations.map(location => ({ slug, location }))
+  )
+}
+
 export async function generateMetadata({ params }: LocationCalculatorPageProps): Promise<Metadata> {
   const calculator = getCalculatorBySlug(params.slug)
   const location = locations.find((loc) => loc.slug === params.location)
@@ -27,11 +50,6 @@ export async function generateMetadata({ params }: LocationCalculatorPageProps):
     title: `${location.name} ${calculator.title} - Local Tipping Guide`,
     description: `${calculator.excerpt} Calculate tips in ${location.name} based on local customs and expectations.`,
   }
-}
-
-export function generateStaticParams() {
-  // Use the centralized location-calculator paths to avoid missing params errors
-  return locationCalculatorPaths
 }
 
 export default function LocationCalculatorPage({ params }: LocationCalculatorPageProps) {

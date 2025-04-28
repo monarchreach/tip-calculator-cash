@@ -1,0 +1,22 @@
+# robots.txt for Tip Calculator Tool
+# https://tipcalculator.cash
+
+User-agent: *
+Allow: /
+
+# Prevent crawling of admin or development pages
+Disallow: /admin/
+Disallow: /dev/
+Disallow: /draft/
+
+# Optimize crawl budget by excluding unnecessary resources
+Disallow: /*.json$
+Disallow: /*.js.map$
+Disallow: /*.css.map$
+
+# Sitemaps
+Sitemap: https://tipcalculator.cash/sitemap.xml
+
+# Crawl delay recommendation (in seconds)
+# Helps prevent server overload during peak times
+Crawl-delay: 1
