@@ -1,7 +1,7 @@
 import type React from "react"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -17,6 +17,11 @@ const inter = Inter({
   variable: "--font-inter",
   weight: ["400", "500", "600", "700"],
 })
+
+// Add viewport export for Next.js 15+
+export const viewport: Viewport = {
+  themeColor: siteMetadata.themeColor,
+}
 
 export const metadata: Metadata = {
   title: {
@@ -62,7 +67,6 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   manifest: "/manifest.json",
-  themeColor: siteMetadata.themeColor,
   robots: {
     index: true,
     follow: true,
@@ -108,14 +112,18 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <div className="relative flex min-h-screen flex-col">
             <Header />
-            <Suspense>
+            <Suspense fallback={<div>Loading...</div>}>
               <main id="main-content" className="flex-1" tabIndex={-1}>{children}</main>
             </Suspense>
             <Footer />
           </div>
         </ThemeProvider>
-        <Analytics />
-        <WebVitals />
+        <Suspense fallback={null}>
+          <Analytics />
+        </Suspense>
+        <Suspense fallback={null}>
+          <WebVitals />
+        </Suspense>
       </body>
     </html>
   )

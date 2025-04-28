@@ -301,6 +301,99 @@ export const calculatorCategories = [
       },
     ],
   },
+  {
+    id: "healthcare-services",
+    title: "Healthcare Services Calculators",
+    description: "Calculate tips for medical spa services, chiropractors, home healthcare providers, and medical aestheticians.",
+    calculators: [
+      {
+        slug: "medical-spa-tip-calculator",
+        title: "Medical Spa Services Tip Calculator",
+        description: "Calculate tips for medical spa treatments",
+        excerpt: "Determine appropriate tips for medical spa services including facials, laser treatments, and other aesthetic procedures.",
+      },
+      {
+        slug: "chiropractor-massage-tip-calculator",
+        title: "Chiropractor & Massage Therapist Tip Calculator",
+        description: "Calculate tips for chiropractic and massage services",
+        excerpt: "Figure out how much to tip chiropractors and massage therapists for their therapeutic services.",
+      },
+      {
+        slug: "home-healthcare-tip-calculator",
+        title: "Home Healthcare Provider Tip Calculator",
+        description: "Calculate tips for home healthcare services",
+        excerpt: "Calculate appropriate tips for home healthcare providers and caregivers based on service duration and quality.",
+      },
+      {
+        slug: "medical-aesthetician-tip-calculator",
+        title: "Medical Aesthetician Tip Calculator",
+        description: "Calculate tips for medical aesthetic services",
+        excerpt: "Determine gratuity for medical aestheticians providing specialized skin and beauty treatments.",
+      },
+    ],
+  },
+  {
+    id: "education-tutoring",
+    title: "Education & Tutoring Calculators",
+    description: "Calculate tips for private tutors, music teachers, language instructors, and sports coaches.",
+    calculators: [
+      {
+        slug: "private-tutor-tip-calculator",
+        title: "Private Tutor Tip Calculator",
+        description: "Calculate tips for private tutoring sessions",
+        excerpt: "Determine appropriate tips for private tutors based on session duration, subject complexity, and teaching quality.",
+      },
+      {
+        slug: "music-teacher-tip-calculator",
+        title: "Music Teacher Tip Calculator",
+        description: "Calculate tips for music instruction",
+        excerpt: "Figure out how much to tip music teachers for private lessons and group instruction.",
+      },
+      {
+        slug: "language-instructor-tip-calculator",
+        title: "Language Instructor Tip Calculator",
+        description: "Calculate tips for language learning sessions",
+        excerpt: "Calculate appropriate tips for language instructors based on lesson type and progress.",
+      },
+      {
+        slug: "sports-coach-tip-calculator",
+        title: "Sports Coach Tip Calculator",
+        description: "Calculate tips for sports coaching",
+        excerpt: "Determine gratuity for sports coaches and trainers based on session type and performance.",
+      },
+    ],
+  },
+  {
+    id: "pet-services",
+    title: "Pet Services Calculators",
+    description: "Calculate tips for dog groomers, pet boarding staff, veterinary staff, and pet trainers.",
+    calculators: [
+      {
+        slug: "dog-groomer-tip-calculator",
+        title: "Dog Groomer Tip Calculator",
+        description: "Calculate tips for pet grooming services",
+        excerpt: "Determine appropriate tips for dog groomers based on service type, pet size, and service quality.",
+      },
+      {
+        slug: "pet-boarding-tip-calculator",
+        title: "Pet Boarding Staff Tip Calculator",
+        description: "Calculate tips for pet boarding services",
+        excerpt: "Figure out how much to tip pet boarding staff based on duration of stay and care quality.",
+      },
+      {
+        slug: "veterinary-staff-tip-calculator",
+        title: "Veterinary Staff Tip Calculator",
+        description: "Calculate tips for veterinary services",
+        excerpt: "Calculate appropriate tips for veterinary staff based on service type and care quality.",
+      },
+      {
+        slug: "pet-trainer-tip-calculator",
+        title: "Pet Trainer Tip Calculator",
+        description: "Calculate tips for pet training services",
+        excerpt: "Determine gratuity for pet trainers based on training type, session duration, and progress.",
+      },
+    ],
+  },
 ]
 
 export const locations = [

@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
+import { Suspense } from "react"
 import { CalculatorPageTemplate } from "@/components/templates/calculator-page-template"
 import { calculatorCategories } from "@/lib/data"
 import { getCalculatorBySlug } from "@/lib/utils"
@@ -8,6 +9,22 @@ import { calculatorMetadata } from "@/lib/metadata"
 import { getBreadcrumbs, generateMetadata as getPageMetadata } from "@/lib/metadata-helper"
 import { generateCompleteSchema } from "@/lib/schema"
 import { calculators } from "@/lib/calculators"
+
+// Define types for calculator objects
+interface Calculator {
+  slug: string;
+  title: string;
+  excerpt: string;
+  description?: string;
+  [key: string]: any;
+}
+
+interface Category {
+  id: string;
+  title: string;
+  calculators: Calculator[];
+  [key: string]: any;
+}
 
 interface CalculatorPageProps {
   params: {
@@ -27,6 +44,124 @@ export async function generateStaticParams() {
   return calculators.map(calculator => ({
     slug: calculator.slug
   }))
+}
+
+// Create a new CalculatorPageContent component to encapsulate any client side logic
+// that might need useSearchParams() in the future
+function CalculatorPageContent({ 
+  calculator, 
+  category, 
+  params,
+  breadcrumbs,
+  schema,
+  faqData 
+}: {
+  calculator: Calculator;
+  category: Category | undefined;
+  params: { slug: string };
+  breadcrumbs: any;
+  schema: any;
+  faqData: { questions: any[] };
+}) {
+  return (
+    <CalculatorPageTemplate
+      title={calculator.title}
+      description={calculator.excerpt}
+      slug={params.slug}
+      category={category ? { title: category.title, id: category.id } : undefined}
+      faqItems={faqData.questions.map(item => ({
+        question: item.question,
+        answer: item.answer
+      }))}
+      schema={{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: calculator.title,
+        description: calculator.excerpt,
+        url: `https://tipcalculator.cash/calculators/${params.slug}`,
+        mainEntity: {
+          "@type": "SoftwareApplication",
+          name: calculator.title,
+          applicationCategory: "CalculatorApplication",
+          operatingSystem: "Any",
+          offers: {
+            "@type": "Offer",
+            price: "0",
+            priceCurrency: "USD",
+          },
+        },
+        breadcrumb: {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://tipcalculator.cash",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Calculators",
+              item: "https://tipcalculator.cash/calculators",
+            },
+            {
+              "@type": "ListItem",
+              position: 3,
+              name: category?.title || "Calculator",
+              item: `https://tipcalculator.cash/calculators#${category?.id || ""}`,
+            },
+            {
+              "@type": "ListItem",
+              position: 4,
+              name: calculator.title,
+              item: `https://tipcalculator.cash/calculators/${params.slug}`,
+            },
+          ],
+        },
+      }}
+    >
+      {/* Related Calculators */}
+      <div className="mt-16">
+        <h2 className="text-2xl font-semibold mb-6">Related Calculators</h2>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+          {category?.calculators
+            .filter((calc: Calculator) => calc.slug !== params.slug)
+            .slice(0, 3)
+            .map((relatedCalc: Calculator) => (
+              <div
+                key={relatedCalc.slug}
+                className="rounded-lg border bg-card p-4 shadow-sm transition-all hover:shadow-md"
+              >
+                <h3 className="font-medium">{relatedCalc.title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground line-clamp-2">{relatedCalc.excerpt}</p>
+                <a
+                  href={`/calculators/${relatedCalc.slug}`}
+                  className="mt-3 inline-flex items-center text-sm font-medium text-primary"
+                >
+                  Open Calculator
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="ml-1 h-4 w-4"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            ))}
+        </div>
+      </div>
+    </CalculatorPageTemplate>
+  );
 }
 
 export default function CalculatorPage({ params }: CalculatorPageProps) {
@@ -83,103 +218,16 @@ export default function CalculatorPage({ params }: CalculatorPageProps) {
     <>
       <Seo pageType="calculator" schema={schema} />
       
-      <CalculatorPageTemplate
-        title={calculator.title}
-        description={calculator.excerpt}
-        slug={params.slug}
-        category={category ? { title: category.title, id: category.id } : undefined}
-        faqItems={faqData.questions.map(item => ({
-          question: item.question,
-          answer: item.answer
-        }))}
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          name: calculator.title,
-          description: calculator.excerpt,
-          url: `https://tipcalculator.cash/calculators/${params.slug}`,
-          mainEntity: {
-            "@type": "SoftwareApplication",
-            name: calculator.title,
-            applicationCategory: "CalculatorApplication",
-            operatingSystem: "Any",
-            offers: {
-              "@type": "Offer",
-              price: "0",
-              priceCurrency: "USD",
-            },
-          },
-          breadcrumb: {
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: "https://tipcalculator.cash",
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "Calculators",
-                item: "https://tipcalculator.cash/calculators",
-              },
-              {
-                "@type": "ListItem",
-                position: 3,
-                name: category?.title || "Calculator",
-                item: `https://tipcalculator.cash/calculators#${category?.id || ""}`,
-              },
-              {
-                "@type": "ListItem",
-                position: 4,
-                name: calculator.title,
-                item: `https://tipcalculator.cash/calculators/${params.slug}`,
-              },
-            ],
-          },
-        }}
-      >
-        {/* Related Calculators */}
-        <div className="mt-16">
-          <h2 className="text-2xl font-semibold mb-6">Related Calculators</h2>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-            {category?.calculators
-              .filter((calc) => calc.slug !== params.slug)
-              .slice(0, 3)
-              .map((relatedCalc) => (
-                <div
-                  key={relatedCalc.slug}
-                  className="rounded-lg border bg-card p-4 shadow-sm transition-all hover:shadow-md"
-                >
-                  <h3 className="font-medium">{relatedCalc.title}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground line-clamp-2">{relatedCalc.excerpt}</p>
-                  <a
-                    href={`/calculators/${relatedCalc.slug}`}
-                    className="mt-3 inline-flex items-center text-sm font-medium text-primary"
-                  >
-                    Open Calculator
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="ml-1 h-4 w-4"
-                    >
-                      <path d="M5 12h14" />
-                      <path d="m12 5 7 7-7 7" />
-                    </svg>
-                  </a>
-                </div>
-              ))}
-          </div>
-        </div>
-      </CalculatorPageTemplate>
+      <Suspense fallback={<div>Loading calculator...</div>}>
+        <CalculatorPageContent 
+          calculator={calculator} 
+          category={category} 
+          params={params} 
+          breadcrumbs={breadcrumbs}
+          schema={schema}
+          faqData={faqData}
+        />
+      </Suspense>
     </>
   )
 }

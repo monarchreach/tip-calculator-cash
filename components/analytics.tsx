@@ -4,7 +4,15 @@ import { usePathname, useSearchParams } from "next/navigation"
 import Script from "next/script"
 import { useEffect } from "react"
 
-export function Analytics() {
+// Add type declaration for window.gtag
+declare global {
+  interface Window {
+    gtag: (command: string, id: string, config?: any) => void;
+  }
+}
+
+// Extract the analytics logic into a separate component that uses useSearchParams
+function AnalyticsContent() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
@@ -17,6 +25,11 @@ export function Analytics() {
     }
   }, [pathname, searchParams])
 
+  return null
+}
+
+// Main Analytics component that doesn't directly use useSearchParams
+export function Analytics() {
   if (process.env.NODE_ENV !== "production") {
     return null
   }
@@ -41,6 +54,7 @@ export function Analytics() {
           `,
         }}
       />
+      <AnalyticsContent />
     </>
   )
 }

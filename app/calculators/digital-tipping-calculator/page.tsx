@@ -1,10 +1,16 @@
-import { Metadata } from "next"
+import { Metadata, Viewport } from "next"
 import { calculatorMetadata } from "@/lib/metadata"
 import { CalculatorPageTemplate } from "@/components/templates/calculator-page-template"
 import { Seo } from "@/components/seo"
 import { SchemaOrg } from "@/components/schema-org"
 import { getBreadcrumbsForCalculator } from "@/lib/navigation"
 import { getCalculatorBySlug } from "@/lib/data"
+import { siteMetadata } from "@/lib/metadata"
+
+// Add viewport export for Next.js 15+
+export const viewport: Viewport = {
+  themeColor: siteMetadata.themeColor,
+}
 
 export const metadata: Metadata = calculatorMetadata["digital-tipping-calculator"] || {
   title: "Digital Tipping Calculator | QR Codes & Payment Apps",

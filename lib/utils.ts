@@ -47,3 +47,10 @@ export function formatSEOTitle(title: string) {
 export function formatSEODescription(description: string) {
   return `${description}. Calculate tips easily with our free online calculator. Get accurate tip amounts based on bill total and service quality.`
 }
+
+export function formatCurrency(amount: number): string {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  }).format(amount);
+}
