@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils"
 
 interface CurrencyInputProps extends Omit<InputProps, "onChange"> {
   currency?: string
+  currencySymbol?: string
   onChange?: (value: number) => void
   defaultValue?: number
   value?: number
@@ -13,12 +14,16 @@ interface CurrencyInputProps extends Omit<InputProps, "onChange"> {
 
 export function CurrencyInput({
   currency = "$",
+  currencySymbol,
   onChange,
   className,
   defaultValue,
   value,
   ...props
 }: CurrencyInputProps) {
+  // Use currencySymbol if provided, otherwise fall back to currency
+  const displaySymbol = currencySymbol || currency
+  
   const [inputValue, setInputValue] = React.useState<string>(
     value !== undefined ? value.toString() : defaultValue !== undefined ? defaultValue.toString() : "",
   )
@@ -48,7 +53,7 @@ export function CurrencyInput({
 
   return (
     <div className="relative">
-      <span className="currency-symbol">{currency}</span>
+      <span className="currency-symbol">{displaySymbol}</span>
       <Input
         type="text"
         inputMode="decimal"

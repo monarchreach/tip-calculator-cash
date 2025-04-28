@@ -25,7 +25,7 @@ export default function CalculatorsPage() {
           name: "Tip Calculators Directory",
           description:
             "Browse our complete collection of tip calculators for restaurants, hotels, transportation, personal services, and more.",
-          url: "https://tipcalculatorhub.com/calculators",
+          url: "https://tipcalculator.cash/calculators",
           mainEntity: {
             "@type": "ItemList",
             itemListElement: calculatorCategories.map((category, index) => ({
@@ -33,7 +33,7 @@ export default function CalculatorsPage() {
               position: index + 1,
               name: category.title,
               description: category.description,
-              url: `https://tipcalculatorhub.com/calculators#${category.id}`,
+              url: `https://tipcalculator.cash/calculators#${category.id}`,
             })),
           },
         }}

@@ -41,7 +41,7 @@ export function generateStaticPaths() {
 }
 
 export function formatSEOTitle(title: string) {
-  return `${title} - Free Online Tip Calculator | Tip Calculator Hub`
+  return `${title} - Free Online Tip Calculator | Tip Calculator Tool`
 }
 
 export function formatSEODescription(description: string) {

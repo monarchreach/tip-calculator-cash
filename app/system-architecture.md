@@ -2,12 +2,12 @@
 # system-architecture.md
 
 ```markdown
-# Tip Calculator Hub - System Architecture
+# Tip Calculator Tool - System Architecture
 
 ## High-Level Architecture Diagram
 
 
-The Tip Calculator Hub is a fully static site built with Next.js using Static Site Generation (SSG). All pages are pre-rendered at build time and served from a CDN. The calculator functionality runs entirely client-side using React and JavaScript.
+The Tip Calculator Tool is a fully static site built with Next.js using Static Site Generation (SSG). All pages are pre-rendered at build time and served from a CDN. The calculator functionality runs entirely client-side using React and JavaScript.
 
 ## Component Interaction Flow
 
@@ -112,7 +112,7 @@ The Tip Calculator Hub is a fully static site built with Next.js using Static Si
 4. **API Access** - Provide calculator functionality as an API for third-party use
 
 
-The Tip Calculator Hub is a fully static site built with Next.js using Static Site Generation (SSG). All pages are pre-rendered at build time and served from a CDN. The calculator functionality runs entirely client-side using React and JavaScript.
+The Tip Calculator Tool is a fully static site built with Next.js using Static Site Generation (SSG). All pages are pre-rendered at build time and served from a CDN. The calculator functionality runs entirely client-side using React and JavaScript.
 
 ## Component Interaction Flow
 

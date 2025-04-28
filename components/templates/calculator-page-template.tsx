@@ -107,19 +107,45 @@ export function CalculatorPageTemplate({
             <p className="mb-4 text-xl text-muted-foreground">{description}</p>
 
             {location && (
-              <div className="mb-8 rounded-lg bg-primary/5 p-4 dark:bg-primary/10">
-                <h2 className="mb-2 text-lg font-semibold">Tipping in {location.name}</h2>
-                <p className="text-muted-foreground">{location.tippingNotes}</p>
-                <div className="mt-4 grid grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <span className="font-medium">Standard Tip:</span> {location.defaultTipPercentage}%
+              <div className="mb-8 rounded-lg bg-primary/5 p-6 dark:bg-primary/10 shadow-sm border border-primary/10">
+                <div className="flex items-start gap-3">
+                  <div className="rounded-md bg-primary/20 p-2 hidden sm:flex">
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      width="24" 
+                      height="24" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="2" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      className="h-6 w-6 text-primary"
+                    >
+                      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
                   </div>
-                  <div>
-                    <span className="font-medium">Typical Range:</span> {location.customaryTipRange.min}-
-                    {location.customaryTipRange.max}%
-                  </div>
-                  <div>
-                    <span className="font-medium">Currency:</span> {location.currency}
+                  <div className="flex-1">
+                    <h2 className="mb-2 text-lg font-semibold flex items-center">
+                      <span className="sm:hidden mr-2">📍</span> Tipping in {location.name}
+                    </h2>
+                    <p className="text-muted-foreground">{location.tippingNotes}</p>
+                    <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+                      <div className="flex items-center justify-between sm:block bg-background/80 p-3 rounded-lg">
+                        <span className="font-medium text-muted-foreground">Standard Tip:</span> 
+                        <span className="font-bold text-primary">{location.defaultTipPercentage}%</span>
+                      </div>
+                      <div className="flex items-center justify-between sm:block bg-background/80 p-3 rounded-lg">
+                        <span className="font-medium text-muted-foreground">Range:</span> 
+                        <span className="font-bold">{location.customaryTipRange.min}-
+                        {location.customaryTipRange.max}%</span>
+                      </div>
+                      <div className="flex items-center justify-between sm:block bg-background/80 p-3 rounded-lg">
+                        <span className="font-medium text-muted-foreground">Currency:</span> 
+                        <span className="font-bold">{location.currency}</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

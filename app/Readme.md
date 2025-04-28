@@ -1,10 +1,10 @@
-# Tip Calculator Hub
+# Tip Calculator Tool
 
 ## Project Overview
-Tip Calculator Hub is a comprehensive web platform providing specialized tip calculators for various service industries, location-specific tipping guidance, and educational content about global tipping customs. The platform helps users calculate appropriate tip amounts based on service type, quality, and local customs.
+Tip Calculator Tool is a comprehensive web platform providing specialized tip calculators for various service industries, location-specific tipping guidance, and educational content about global tipping customs. The platform helps users calculate appropriate tip amounts based on service type, quality, and local customs.
 
 ## Live Demo
-[Tip Calculator Hub](https://tipcalculatorhub.com)
+[Tip Calculator Tool](https://tipcalculator.cash)
 
 ## Quickstart Instructions
 
@@ -13,20 +13,20 @@ Tip Calculator Hub is a comprehensive web platform providing specialized tip cal
    git clone https://github.com/your-organization/tip-calculator-hub.git
    cd tip-calculator-hub
 
-   ### Documentation Files for Tip Calculator Hub
+   ### Documentation Files for Tip Calculator Tool
 
 I've prepared all the documentation files as requested. Each file is formatted in Markdown and ready to be saved to your project repository.
 
 ## File: README.md
 
 ```markdown
-# Tip Calculator Hub
+# Tip Calculator Tool
 
 ## Project Overview
-Tip Calculator Hub is a comprehensive web platform providing specialized tip calculators for various service industries, location-specific tipping guidance, and educational content about global tipping customs. The platform helps users calculate appropriate tip amounts based on service type, quality, and local customs.
+Tip Calculator Tool is a comprehensive web platform providing specialized tip calculators for various service industries, location-specific tipping guidance, and educational content about global tipping customs. The platform helps users calculate appropriate tip amounts based on service type, quality, and local customs.
 
 ## Live Demo
-[Tip Calculator Hub](https://tipcalculatorhub.com)
+[Tip Calculator Tool](https://tipcalculator.cash)
 
 ## Quickstart Instructions
 
@@ -93,10 +93,10 @@ License
 ## File: requirements.md
 
 ```markdown
-# Tip Calculator Hub - Requirements
+# Tip Calculator Tool - Requirements
 
 ## Project Goals
-Tip Calculator Hub aims to simplify tipping decisions for travelers and service industry customers worldwide by providing:
+Tip Calculator Tool aims to simplify tipping decisions for travelers and service industry customers worldwide by providing:
 
 1. Accurate, easy-to-use calculators for various service types
 2. Location-specific tipping guidance based on local customs

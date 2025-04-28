@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function GlobalTippingEtiquettePage() {
   return (
     <>
-      <SchemaOrg
+      <SchemaOrg 
         schema={{
           "@context": "https://schema.org",
           "@type": "Guide",
@@ -25,13 +25,13 @@ export default function GlobalTippingEtiquettePage() {
             "Comprehensive guide to tipping customs and expectations in different countries. Learn appropriate tip amounts for restaurants, hotels, taxis, and more worldwide.",
           publisher: {
             "@type": "Organization",
-            name: "Tip Calculator Hub",
+            name: "Tip Calculator Tool",
             logo: {
               "@type": "ImageObject",
-              url: "https://tipcalculatorhub.com/logo.png",
+              url: "https://tipcalculator.cash/logo.png",
             },
           },
-        }}
+        }} 
       />
 
       {/* Hero Section */}
@@ -433,7 +433,7 @@ export default function GlobalTippingEtiquettePage() {
                     <div className="rounded-lg border bg-card p-4">
                       <div className="flex justify-between items-center mb-2">
                         <span className="font-medium">Hotels</span>
-                        <Badge\">€1-2 per day/bag</Badge>
+                        <Badge>€1-2 per day/bag</Badge>
                       </div>
                       <p className="text-sm text-muted-foreground">
                         Housekeeping: €1-2 per day. Bellhop: €1-2 per bag. Concierge: €5-10 for special assistance.
@@ -601,7 +601,7 @@ export default function GlobalTippingEtiquettePage() {
                   <div className="rounded-lg border bg-card p-4">
                     <div className="flex justify-between items-center mb-2">
                       <span className="font-medium">Hotels</span>
-                      <Badge">₹50-100 per service</Badge>
+                      <Badge>₹50-100 per service</Badge>
                     </div>
                     <p className="text-sm text-muted-foreground">
                       Bellhop: ₹50-100 per bag. Housekeeping: ₹100-200 per day.

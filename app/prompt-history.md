@@ -1,18 +1,18 @@
-# Tip Calculator Hub - Prompt History
+# Tip Calculator Tool - Prompt History
 
 ## Prompt Overview
 
-The Tip Calculator Hub project was developed using a series of prompts to guide the design, architecture, and implementation. This document captures the key prompts used during development to provide context for future maintenance and extensions.
+The Tip Calculator Tool project was developed using a series of prompts to guide the design, architecture, and implementation. This document captures the key prompts used during development to provide context for future maintenance and extensions.
 
 ## Prompt Log
 
 ### Initial Design System Prompt
 
-**Purpose:** Establish a comprehensive frontend design system for the Tip Calculator Hub project.
+**Purpose:** Establish a comprehensive frontend design system for the Tip Calculator Tool project.
 
 **Prompt:**
 
-Create a comprehensive frontend design system for the Tip Calculator Hub project, outlining specific design principles, tokens, layouts, and component architecture following the Atomic Design methodology.
+Create a comprehensive frontend design system for the Tip Calculator Tool project, outlining specific design principles, tokens, layouts, and component architecture following the Atomic Design methodology.
 
 ```plaintext
 
@@ -31,7 +31,7 @@ Create a comprehensive frontend design system for the Tip Calculator Hub project
 **Prompt:**
 ```
 
-[Content strategy details for the Tip Calculator Hub website, outlining structure, purpose, and content for various page types]
+[Content strategy details for the Tip Calculator Tool website, outlining structure, purpose, and content for various page types]
 
 ```plaintext
 
@@ -51,7 +51,7 @@ Create a comprehensive frontend design system for the Tip Calculator Hub project
 **Prompt:**
 ```
 
-[Request for implementation of various components and files for the Tip Calculator Hub project]
+[Request for implementation of various components and files for the Tip Calculator Tool project]
 
 ```plaintext
 
@@ -109,7 +109,7 @@ Create a comprehensive frontend design system for the Tip Calculator Hub project
 
 ## Future Prompting Strategy
 
-For future development and maintenance of the Tip Calculator Hub project, consider the following prompting strategies:
+For future development and maintenance of the Tip Calculator Tool project, consider the following prompting strategies:
 
 ### Adding New Calculator Types
 

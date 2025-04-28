@@ -4,6 +4,7 @@ import { CalculatorPageTemplate } from "@/components/templates/calculator-page-t
 import { calculatorCategories } from "@/lib/data"
 import { locations } from "@/lib/data"
 import { getCalculatorBySlug } from "@/lib/utils"
+import { locationCalculatorPaths } from "@/lib/location-calculators"
 
 interface LocationCalculatorPageProps {
   params: {
@@ -29,13 +30,8 @@ export async function generateMetadata({ params }: LocationCalculatorPageProps):
 }
 
 export function generateStaticParams() {
-  return [
-    { slug: "restaurant-tip-calculator", location: "new-york" },
-    { slug: "restaurant-tip-calculator", location: "london" },
-    { slug: "uber-lyft-tip-calculator", location: "dubai" },
-    { slug: "hotel-staff-tip-calculator", location: "las-vegas" },
-    { slug: "spa-service-tip-calculator", location: "bali" },
-  ]
+  // Use the centralized location-calculator paths to avoid missing params errors
+  return locationCalculatorPaths
 }
 
 export default function LocationCalculatorPage({ params }: LocationCalculatorPageProps) {
@@ -88,7 +84,7 @@ export default function LocationCalculatorPage({ params }: LocationCalculatorPag
         "@type": "WebPage",
         name: `${location.name} ${calculator.title}`,
         description: `${calculator.excerpt} Calculate tips in ${location.name} based on local customs and expectations.`,
-        url: `https://tipcalculatorhub.com/calculators/${params.slug}/${params.location}/`,
+        url: `https://tipcalculator.cash/calculators/${params.slug}/${params.location}/`,
         mainEntity: {
           "@type": "SoftwareApplication",
           name: `${location.name} ${calculator.title}`,
@@ -107,25 +103,25 @@ export default function LocationCalculatorPage({ params }: LocationCalculatorPag
               "@type": "ListItem",
               position: 1,
               name: "Home",
-              item: "https://tipcalculatorhub.com",
+              item: "https://tipcalculator.cash",
             },
             {
               "@type": "ListItem",
               position: 2,
               name: "Calculators",
-              item: "https://tipcalculatorhub.com/calculators",
+              item: "https://tipcalculator.cash/calculators",
             },
             {
               "@type": "ListItem",
               position: 3,
               name: calculator.title,
-              item: `https://tipcalculatorhub.com/calculators/${params.slug}`,
+              item: `https://tipcalculator.cash/calculators/${params.slug}`,
             },
             {
               "@type": "ListItem",
               position: 4,
               name: location.name,
-              item: `https://tipcalculatorhub.com/calculators/${params.slug}/${params.location}`,
+              item: `https://tipcalculator.cash/calculators/${params.slug}/${params.location}`,
             },
           ],
         },

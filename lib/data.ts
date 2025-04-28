@@ -190,6 +190,117 @@ export const calculatorCategories = [
       },
     ],
   },
+  {
+    id: "home-services",
+    title: "Home & Moving Services Calculators",
+    description: "Calculate tips for moving companies, cleaning services, and other home service providers.",
+    calculators: [
+      {
+        slug: "moving-company-tip-calculator",
+        title: "Moving Company Tip Calculator",
+        description: "Calculate tips for movers",
+        excerpt: "Determine appropriate tips for moving company employees based on job size and service quality.",
+      },
+      {
+        slug: "cleaning-service-tip-calculator",
+        title: "Cleaning Service Tip Calculator",
+        description: "Calculate tips for house cleaners",
+        excerpt: "Figure out how much to tip house cleaning professionals for regular or one-time services.",
+      },
+      {
+        slug: "handyman-tip-calculator",
+        title: "Handyman Tip Calculator",
+        description: "Calculate tips for repair services",
+        excerpt: "Calculate appropriate tips for handymen and repair professionals based on job complexity.",
+      },
+      {
+        slug: "home-delivery-tip-calculator",
+        title: "Home Delivery Tip Calculator",
+        description: "Calculate tips for delivery people",
+        excerpt: "Determine gratuity for various home delivery services including packages and groceries.",
+      },
+      {
+        slug: "furniture-delivery-tip-calculator",
+        title: "Furniture Delivery Tip Calculator",
+        description: "Calculate tips for furniture delivery",
+        excerpt: "Figure out how much to tip furniture delivery teams based on item size and delivery complexity.",
+      },
+    ],
+  },
+  {
+    id: "events-entertainment",
+    title: "Events & Entertainment Calculators",
+    description: "Calculate tips for wedding staff, event planners, photographers, and other event service providers.",
+    calculators: [
+      {
+        slug: "wedding-staff-tip-calculator",
+        title: "Wedding Staff Tip Calculator",
+        description: "Calculate tips for wedding vendors",
+        excerpt: "Determine appropriate gratuity for all wedding vendors and service providers.",
+      },
+      {
+        slug: "event-planner-tip-calculator",
+        title: "Event Planner Tip Calculator",
+        description: "Calculate tips for event planners",
+        excerpt: "Figure out how much to tip event planners and their staff for various events.",
+      },
+      {
+        slug: "photographer-videographer-tip-calculator",
+        title: "Photographer & Videographer Tip Calculator",
+        description: "Calculate tips for photography services",
+        excerpt: "Calculate appropriate tips for photographers and videographers at events and sessions.",
+      },
+      {
+        slug: "dj-band-tip-calculator",
+        title: "DJ & Band Tip Calculator",
+        description: "Calculate tips for music providers",
+        excerpt: "Determine gratuity for DJs, bands, and other music providers at events.",
+      },
+      {
+        slug: "party-catering-tip-calculator",
+        title: "Party Catering Tip Calculator",
+        description: "Calculate tips for party caterers",
+        excerpt: "Figure out how much to tip catering staff for private parties and events.",
+      },
+      {
+        slug: "venue-staff-tip-calculator",
+        title: "Venue Staff Tip Calculator",
+        description: "Calculate tips for venue employees",
+        excerpt: "Calculate appropriate tips for venue staff at various event locations.",
+      },
+    ],
+  },
+  {
+    id: "professional-services",
+    title: "Professional & Freelance Calculators",
+    description: "Calculate tips for freelancers, consultants, and other professional service providers.",
+    calculators: [
+      {
+        slug: "freelancer-tip-calculator",
+        title: "Freelancer Tip Calculator",
+        description: "Calculate tips for freelance workers",
+        excerpt: "Determine appropriate additional compensation for freelancers who exceed expectations.",
+      },
+      {
+        slug: "consultant-tip-calculator",
+        title: "Consultant Tip Calculator",
+        description: "Calculate tips for consultants",
+        excerpt: "Figure out if and when to provide extra compensation to consultants for exceptional service.",
+      },
+      {
+        slug: "virtual-assistant-tip-calculator",
+        title: "Virtual Assistant Tip Calculator",
+        description: "Calculate tips for virtual assistants",
+        excerpt: "Calculate appropriate bonuses and tips for virtual assistant services.",
+      },
+      {
+        slug: "pet-sitter-walker-tip-calculator",
+        title: "Pet Sitter & Walker Tip Calculator",
+        description: "Calculate tips for pet care services",
+        excerpt: "Determine gratuity for pet sitters, dog walkers, and other pet care professionals.",
+      },
+    ],
+  },
 ]
 
 export const locations = [
@@ -244,3 +355,33 @@ export const locations = [
       "Tipping isn't traditionally expected in Bali, but is increasingly common in tourist areas. 5-10% is appreciated.",
   },
 ]
+
+// Function to get a calculator by slug
+export function getCalculatorBySlug(slug: string) {
+  // First search in all defined categories
+  for (const category of calculatorCategories) {
+    const calculator = category.calculators.find(calc => calc.slug === slug);
+    if (calculator) {
+      return { ...calculator, category: category.title };
+    }
+  }
+  
+  // If not found, check if it's a special calculator we want to support
+  // but isn't explicitly defined in the categories
+  const specialCalculators = [
+    {
+      slug: "group-dining-tip-calculator",
+      title: "Group Dining Tip Calculator",
+      description: "Split restaurant bills and calculate tips for group dining experiences",
+      category: "Food & Beverage",
+    },
+    {
+      slug: "digital-tipping-calculator",
+      title: "Digital Tipping Calculator",
+      description: "Calculate tips for digital and contactless payment methods",
+      category: "Technology",
+    }
+  ];
+  
+  return specialCalculators.find(calc => calc.slug === slug);
+}

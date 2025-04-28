@@ -24,14 +24,14 @@ export default function DigitalTippingGuidePage() {
             "Learn how to use QR codes, apps, and digital payment methods for tipping. Comprehensive guide to modern cashless gratuity options and etiquette.",
           author: {
             "@type": "Organization",
-            name: "Tip Calculator Hub",
+            name: "Tip Calculator Tool",
           },
           publisher: {
             "@type": "Organization",
-            name: "Tip Calculator Hub",
+            name: "Tip Calculator Tool",
             logo: {
               "@type": "ImageObject",
-              url: "https://tipcalculatorhub.com/logo.png",
+              url: "https://tipcalculator.cash/logo.png",
             },
           },
           datePublished: "2023-04-15",
